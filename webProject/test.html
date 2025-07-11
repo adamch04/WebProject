@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adam - Cybersecurity Student</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --dark-bg: #111119; /* Fond général du corps */
+            --section-bg: #1A1A2E; /* Couleur de fond des conteneurs principaux */
+            --box-bg: #1B1B2B; /* Couleur de fond des cartes/items */
+            --primary-blue: #007bff; /* Bleu des éléments clés */
+            --secondary-blue: #00c6ff; /* Bleu pour les dégradés */
+            --text-light: #f0f0f0; /* Texte clair */
+            --text-grey: #a0a0a0; /* Texte gris clair pour les paragraphes secondaires */
+            --button-bg: #007bff; /* Fond des boutons */
+            --button-hover: #0056b3; /* Fond des boutons au survol */
+            --border-color: rgba(255, 255, 255, 0.1); /* Bordures subtiles */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Changement de police */
+            background-color: var(--dark-bg); /* Fond sombre comme dans l'image */
+            color: var(--text-light); /* Couleur de texte par défaut claire */
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px; /* Conserve le padding existant */
+            position: relative;
+            z-index: 0;
+        }
+
+        /* Supprime l'overlay semi-transparent existant, car le nouveau fond est déjà sombre */
+        body::before {
+            content: none; 
+        }
+
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 1200px;
+            background-color: var(--section-bg); /* Nouvelle couleur de fond */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4); /* Ombre plus prononcée */
+            overflow: hidden;
+            margin-bottom: 40px;
+            z-index: 1;
+            /* Ajout d'un dégradé subtil en arrière-plan comme sur l'image pour la section principale */
+            background-image: radial-gradient(circle at center, #1B2C67 0%, var(--section-bg) 70%);
+        }
+
+        .left {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.1; /* Ajustement pour le titre */
+        }
+
+        /* Pour simuler le dégradé sur une partie du texte du titre */
+        .left h1 span.gradient-text {
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .left p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text-grey); /* Couleur de texte plus claire */
+        }
+
+        .left button {
+            padding: 12px 24px;
+            border: none; /* Supprime la bordure noire */
+            background-color: var(--primary-blue); /* Fond bleu comme sur l'image */
+            color: white;
+            border-radius: 8px; /* Coins plus arrondis */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600; /* Plus gras */
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Ajout de transform */
+            align-self: flex-start;
+            display: inline-flex; /* Pour l'icône de la flèche si ajoutée */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left button:hover {
+            background-color: var(--button-hover); /* Couleur au survol */
+            transform: translateY(-3px); /* Effet de soulèvement */
+        }
+
+        .right {
+            flex: 1;
+            min-height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--box-bg); /* Couleur de fond pour la partie image */
+        }
+
+        .right img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5); /* Ombre plus foncée */
+            border: 5px solid var(--primary-blue); /* Bordure bleue */
+            display: block;
+        }
+
+        .info-sections-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            z-index: 1;
+        }
+        .info-item {
+            background-color: var(--box-bg); /* Nouveau fond sombre */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre adaptée */
+            flex: 1;
+            min-width: 250px;
+            max-width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .info-item .icon {
+            font-size: 3em;
+            color: var(--primary-blue); /* Couleur bleue */
+            margin-bottom: 15px;
+        }
+
+        .info-item h3 {
+            font-size: 1.8em;
+            color: var(--text-light); /* Texte clair */
+            margin-bottom: 10px;
+        }
+
+        .info-item p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            color: var(--text-grey); /* Texte gris */
+            margin-bottom: 0;
+        }
+
+        .social-icons-container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: var(--section-bg); /* Nouveau fond sombre */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.4); /* Ombre adaptée */
+            padding: 30px 20px;
+            margin-top: 20px; 
+            margin-bottom: 40px; 
+            text-align: center;
+            z-index: 1;
+        }
+
+        .social-icons-container h3 {
+            font-size: 1.8em;
+            color: var(--text-light); /* Texte clair */
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px; 
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: var(--text-grey); /* Couleur par défaut des icônes grisées */
+            font-size: 3.5em; 
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links .fa-linkedin:hover {
+            color: #0A66C2; /* Couleur LinkedIn officielle */
+            transform: scale(1.1);
+        }
+
+        .social-links .fa-instagram:hover {
+            color: #E1306C; /* Couleur Instagram officielle */
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .left, .right {
+                padding: 40px;
+                flex: unset;
+            }
+            .right {
+                min-height: auto;
+                padding: 20px;
+            }
+            .right img {
+                width: 180px;
+                height: 180px;
+            }
+            .info-sections-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .info-item {
+                max-width: 90%;
+            }
+            .social-links {
+                flex-direction: column; 
+                gap: 20px; 
+            }
+        }
+
+        @media (max-width: 600px) {
+            .left h1 {
+                font-size: 36px;
+            }
+            .left p {
+                font-size: 16px;
+            }
+            .info-item .icon {
+                font-size: 2.5em;
+            }
+            .info-item h3 {
+                font-size: 1.5em;
+            }
+            .social-links a {
+                font-size: 3em; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="left">
+            <h1>Hey, I'm Adam. <span class="gradient-text">Cybersecurity Student</span></h1>
+            <p>I'm a Cybersecurity and Networking student at the Higher School of Technology Beni Mellal,<br>
+            which is part of Sultan Moulay Slimane University.</p>
+            <button>Contact me by email <i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="right">
+            <img src="student.png" alt="Adam's profile picture">
+        </div>
+    </div>
+    
+    <div class="info-sections-container">
+        <div class="info-item">
+            <div class="icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Compétences</h3>
+            <p>HTML, CSS, Python, Cybersécurité, Réseaux, Linux, Cryptographie.</p>
+        </div>
+
+        <div class="info-item">
+            <div class="icon"><i class="fas fa-project-diagram"></i></div>
+            <h3>Projets</h3>
+            <p>Découvrez mes réalisations et les défis techniques que j'ai relevés.</p>
+        </div>
+
+        <div class="info-item">
+            <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Éducation</h3>
+            <p>Mon parcours académique et les certifications obtenues.</p>
+        </div>
+
+    </div>
+
+    <div class="social-icons-container">
+        <h3>Connectons-nous !</h3>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/votre_nom_utilisateur_linkedin" target="_blank" aria-label="Mon profil LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/votre_nom_utilisateur_instagram" target="_blank" aria-label="Mon profil Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+    
+</body>
+</html>
